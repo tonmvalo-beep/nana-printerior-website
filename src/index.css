@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&family=Source+Serif+Pro:wght@400;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 22%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 22%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 22%;
+    --primary: 330 30% 73%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 184 100% 34%;
+    --secondary-foreground: 0 0% 100%;
+    --accent: 320 25% 38%;
+    --accent-foreground: 0 0% 100%;
+    --muted: 0 0% 98%;
+    --muted-foreground: 0 0% 40%;
+    --destructive: 4 90% 58%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
+    --ring: 330 30% 73%;
+    --radius: 0.5rem;
+    --success: 142 71% 45%;
+    --warning: 45 100% 51%;
+    --error: 4 90% 58%;
+    --info: 217 89% 61%;
+  }
+
+  * {
+    @apply border-border;
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    @apply text-foreground;
+  }
+
+  p, div, span, a, li, button, input, textarea, label {
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  h1 {
+    font-size: 64px;
+    line-height: 1.2;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 48px;
+    line-height: 1.3;
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: 36px;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  h4 {
+    font-size: 28px;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  h5 {
+    font-size: 22px;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  h6 {
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 500;
+  }
+
+  p, div, span, a, li {
+    @apply text-foreground;
+  }
+
+  @keyframes color-cycle {
+    0% { color: #D0A1BA; }
+    33% { color: #00A3AD; }
+    66% { color: #66435A; }
+    100% { color: #D0A1BA; }
+  }
+
+  .animate-color-change {
+    animation: color-cycle 4s ease-in-out infinite;
+  }
+
+  @keyframes float-3d {
+    0%, 100% {
+      transform: translateY(0px) rotateX(0deg) rotateY(0deg);
+    }
+    25% {
+      transform: translateY(-20px) rotateX(5deg) rotateY(-5deg);
+    }
+    50% {
+      transform: translateY(-10px) rotateX(-5deg) rotateY(5deg);
+    }
+    75% {
+      transform: translateY(-15px) rotateX(3deg) rotateY(-3deg);
+    }
+  }
+
+  .printer-3d {
+    animation: float-3d 8s ease-in-out infinite;
+    transform-style: preserve-3d;
+  }
+}

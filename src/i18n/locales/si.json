@@ -1,0 +1,85 @@
+{
+  "nav": {
+    "home": "Domov",
+    "about": "O\u00A0nas",
+    "services": "Storitve",
+    "products": "Izdelki",
+    "gallery": "Galerija",
+    "contact": "Kontakt",
+    "faq": "Pogosta\u00A0vprašanja",
+    "testimonials": "Mnenja",
+    "search": "Iskanje...",
+    "location": "Lokacija"
+  },
+
+  "hero": {
+    "title": "Vsaka barva ena zgodba",
+    "subtitle": "Digitalni tisk za podjetja in posameznike.",
+    "cta": "Poglej ponudbo"
+  },
+  "services": {
+    "title": "Naše storitve",
+    "panels": "Reklamni panoji",
+    "tshirts": "Tisk majic",
+    "custom": "Personalizirani izdelki"
+  },
+  "benefits": {
+    "title": "Zakaj izbrati NANA PRINTERIOR?",
+    "fast": "Hitro & zanesljivo",
+    "quality": "Visoka barvna natančnost",
+    "tech": "HP Latex 365",
+    "custom": "Tisk po meri"
+  },
+  "about": {
+    "title": "O nas",
+    "story": "Naša zgodba",
+    "mission": "Naša misija",
+    "vision": "Naša vizija"
+  },
+  "products": {
+    "title": "Izdelki",
+    "panels": "Panoji",
+    "tshirts": "Majice",
+    "createDesign": "Ustvari svoj dizajn"
+  },
+  "contact": {
+    "title": "Kontakt",
+    "name": "Ime",
+    "email": "E-pošta",
+    "phone": "Telefon",
+    "message": "Sporočilo",
+    "submit": "Pošlji",
+    "success": "Hvala! Vaše sporočilo je bilo poslano."
+  },
+  "faq": {
+    "title": "Pogosta vprašanja"
+  },
+  "testimonials": {
+    "title": "Mnenja strank"
+  },
+  "footer": {
+    "description": "Digitalni tisk za podjetja in posameznike.",
+    "quickLinks": "Hitre povezave",
+    "contact": "Kontakt"
+  },
+  "search": {
+    "placeholder": "Išči..."
+  },
+  "editor": {
+    "panels": {
+      "title": "Uredi reklamni pano",
+      "uploadImage": "Naloži sliko",
+      "addText": "Dodaj besedilo",
+      "selectSize": "Izberi velikost",
+      "sendInquiry": "Pošlji povpraševanje"
+    },
+    "tshirt": {
+      "title": "Uredi majico",
+      "selectColor": "Izberi barvo",
+      "uploadGraphic": "Naloži grafiko",
+      "addText": "Dodaj besedilo",
+      "frontBack": "Spredaj/Zadaj",
+      "sendInquiry": "Pošlji povpraševanje"
+    }
+  }
+}

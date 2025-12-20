@@ -1,0 +1,85 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "products": "Products",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "faq": "FAQ",
+    "testimonials": "Testimonials",
+    "search": "Search...",
+    "location": "Location"
+  },
+
+  "hero": {
+    "title": "Every color tells a story",
+    "subtitle": "Digital printing for businesses and individuals.",
+    "cta": "View Offer"
+  },
+  "services": {
+    "title": "Our Services",
+    "panels": "Advertising Panels",
+    "tshirts": "T-Shirt Printing",
+    "custom": "Custom Products"
+  },
+  "benefits": {
+    "title": "Why choose NANA PRINTERIOR?",
+    "fast": "Fast & Reliable",
+    "quality": "High Color Accuracy",
+    "tech": "HP Latex 365",
+    "custom": "Custom Printing"
+  },
+  "about": {
+    "title": "About Us",
+    "story": "Our Story",
+    "mission": "Our Mission",
+    "vision": "Our Vision"
+  },
+  "products": {
+    "title": "Products",
+    "panels": "Panels",
+    "tshirts": "T-Shirts",
+    "createDesign": "Create Your Design"
+  },
+  "contact": {
+    "title": "Contact",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "message": "Message",
+    "submit": "Send",
+    "success": "Thank you! Your message has been sent."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions"
+  },
+  "testimonials": {
+    "title": "Customer Testimonials"
+  },
+  "footer": {
+    "description": "Digital printing for businesses and individuals.",
+    "quickLinks": "Quick Links",
+    "contact": "Contact"
+  },
+  "search": {
+    "placeholder": "Search..."
+  },
+  "editor": {
+    "panels": {
+      "title": "Edit Advertising Panel",
+      "uploadImage": "Upload Image",
+      "addText": "Add Text",
+      "selectSize": "Select Size",
+      "sendInquiry": "Send Inquiry"
+    },
+    "tshirt": {
+      "title": "Edit T-Shirt",
+      "selectColor": "Select Color",
+      "uploadGraphic": "Upload Graphic",
+      "addText": "Add Text",
+      "frontBack": "Front/Back",
+      "sendInquiry": "Send Inquiry"
+    }
+  }
+}
