@@ -69,6 +69,16 @@ export default function ProductMockupEditor({
       img.onload = () => setMockupImage(img);
     }
   }, [preset.mockupImageUrl]);
+  useEffect(() => {
+  if (preset.productType === 'tshirt') {
+    const shade = new Image();
+    shade.src = '/mockups/tshirt/shade.png';
+    shade.onload = () => setTshirtShade(shade);
+  } else {
+    setTshirtShade(null);
+  }
+}, [preset.productType]);
+
 
   const saveToHistory = useCallback((state: EditorState) => {
     historyRef.current.push(state);
