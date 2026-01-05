@@ -161,12 +161,17 @@ export default function ProductMockupEditor({
       strokeWidth: 2
     };
 
-    const newState = {
-      objects: [...editorState.objects, newObject],
-      selectedId: newObject.id
-    };
+setEditorState((prev) => {
+  const newState = {
+    objects: [...prev.objects, newObject],
+    selectedId: newObject.id
+  };
+  saveToHistory(newState);
+  setCanUndo(historyRef.current.canUndo());
+  setCanRedo(historyRef.current.canRedo());
+  return newState;
+});
 
-    updateEditorState(newState);
     setTool('select');
   };
 
