@@ -26,6 +26,17 @@ interface ProductMockupEditorProps {
 }
 
 let objectIdCounter = 0;
+function hexToRgb(hex: string) {
+  const clean = hex.replace('#', '');
+  const full = clean.length === 3 ? clean.split('').map(c => c + c).join('') : clean;
+  const num = parseInt(full, 16);
+  return {
+    r: (num >> 16) & 255,
+    g: (num >> 8) & 255,
+    b: num & 255,
+  };
+}
+
 
 export default function ProductMockupEditor({
   preset,
