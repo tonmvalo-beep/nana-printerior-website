@@ -236,12 +236,14 @@ export default function ProductMockupEditor({
     reader.readAsDataURL(file);
   };
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    accept: { 'image/*': ['.png', '.jpg', '.jpeg', '.gif', '.svg'] },
-    multiple: false,
-    noClick: true
-  });
+const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
+  onDrop,
+  accept: { 'image/*': ['.png', '.jpg', '.jpeg', '.gif'] }, // remove svg (often breaks Konva)
+  multiple: false,
+  noClick: true,      // keep noClick true
+  noKeyboard: true    // optional: prevents weird focus triggering
+});
+
 
   const handleObjectSelect = (id: string) => {
     setEditorState(prev => ({ ...prev, selectedId: id }));
@@ -522,19 +524,29 @@ export default function ProductMockupEditor({
 
             <Separator />
 
-            <div
-              {...getRootProps()}
-              className={`border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-colors ${
-                isDragActive
-                  ? 'border-primary bg-primary/10'
-                  : 'border-border hover:bg-muted'
-              }`}
-            >
-              <input {...getInputProps()} />
-              <UploadIcon className="h-8 w-8 mx-auto mb-2 text-accent" />
-              <p className="text-xs font-medium">Upload Image</p>
-              <p className="text-xs text-muted-foreground mt-1">PNG, JPG, GIF</p>
-            </div>
+<div
+  role="button"
+  tabIndex={0}
+  onClick={(e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    open(); // ✅ this opens file picker
+  }}
+  onKeyDown={(e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      open();
+    }
+  }}
+  className={`border-2 border-dashed rounded-lg p-6 text-center cursor-pointer transition-colors ${
+    isDragActive ? 'border-primary bg-primary/10' : 'border-border hover:bg-muted'
+  }`}
+>
+  <UploadIcon className="h-8 w-8 mx-auto mb-2 text-accent" />
+  <p className="text-xs font-medium">Upload Image</p>
+  <p className="text-xs text-muted-foreground mt-1">PNG, JPG, GIF</p>
+</div>
+
 
             <Button
               onClick={handleInquiryOpen}
