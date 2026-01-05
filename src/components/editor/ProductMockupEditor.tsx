@@ -432,7 +432,7 @@ const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
               ref={stageRef}
               width={preset.canvasWidth}
               height={preset.canvasHeight}
-              style={{ border: '1px solid #ccc', background: shirtColor || 'white' }}
+              style={{ border: '1px solid #ccc', background: 'white' }}
             >
               <Layer>
 {/* PANEL (or any non-tshirt) mockup */}
