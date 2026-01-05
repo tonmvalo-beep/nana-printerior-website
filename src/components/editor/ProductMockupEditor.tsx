@@ -55,6 +55,8 @@ export default function ProductMockupEditor({
   const [fontSize, setFontSize] = useState(40);
   const [showInquiry, setShowInquiry] = useState(false);
   const [mockupImage, setMockupImage] = useState<HTMLImageElement | null>(null);
+  const [tshirtShade, setTshirtShade] = useState<HTMLImageElement | null>(null);
+
 
   const printableRect = selectedSize && preset.printableRects[selectedSize]
     ? preset.printableRects[selectedSize]
