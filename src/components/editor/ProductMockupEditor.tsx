@@ -435,13 +435,50 @@ const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
               style={{ border: '1px solid #ccc', background: shirtColor || 'white' }}
             >
               <Layer>
-                {mockupImage && (
-                  <KonvaImage
-                    image={mockupImage}
-                    width={preset.canvasWidth}
-                    height={preset.canvasHeight}
-                  />
-                )}
+{/* PANEL (or any non-tshirt) mockup */}
+{mockupImage && preset.productType !== 'tshirt' && (
+  <KonvaImage
+    image={mockupImage}
+    width={preset.canvasWidth}
+    height={preset.canvasHeight}
+  />
+)}
+
+{/* TSHIRT realistic mockup: tinted base + shading overlay */}
+{mockupImage && preset.productType === 'tshirt' && (() => {
+  const rgb = hexToRgb(shirtColor || '#ffffff');
+  return (
+    <>
+      {/* Base shirt */}
+      <KonvaImage
+        image={mockupImage}
+        x={0}
+        y={0}
+        width={preset.canvasWidth}
+        height={preset.canvasHeight}
+        // Tint the base shirt while keeping its texture
+        filters={[Konva.Filters.RGBA]}
+        red={rgb.r}
+        green={rgb.g}
+        blue={rgb.b}
+        alpha={255}
+      />
+
+      {/* Shading overlay keeps folds/shadows */}
+      {tshirtShade && (
+        <KonvaImage
+          image={tshirtShade}
+          x={0}
+          y={0}
+          width={preset.canvasWidth}
+          height={preset.canvasHeight}
+          opacity={0.9}
+        />
+      )}
+    </>
+  );
+})()}
+
 
                 <Rect
                   x={printableRect.x}
