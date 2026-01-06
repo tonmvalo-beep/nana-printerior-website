@@ -87,6 +87,7 @@ export default function ProductMockupEditor({
   useEffect(() => {
   if (preset.productType === 'tshirt') {
     const shade = new Image();
+    shade.crossOrigin = 'anonymous';
     shade.src = '/mockups/tshirt/shade.png';
     shade.onload = () => setTshirtShade(shade);
   } else {
