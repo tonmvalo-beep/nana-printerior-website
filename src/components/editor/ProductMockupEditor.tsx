@@ -78,8 +78,10 @@ export default function ProductMockupEditor({
   useEffect(() => {
     if (preset.mockupImageUrl) {
       const img = new Image();
+      img.crossOrigin = 'anonymous';
       img.src = preset.mockupImageUrl;
       img.onload = () => setMockupImage(img);
+
     }
   }, [preset.mockupImageUrl]);
   useEffect(() => {
