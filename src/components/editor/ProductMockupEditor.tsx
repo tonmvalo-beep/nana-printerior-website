@@ -92,6 +92,16 @@ export default function ProductMockupEditor({
   }
 }, [preset.productType]);
 
+useEffect(() => {
+  if (preset.productType !== 'tshirt') return;
+  const node = tshirtBaseRef.current;
+  if (!node) return;
+
+  // Konva filters work ONLY on cached nodes
+  node.cache();
+  node.getLayer()?.batchDraw();
+}, [preset.productType, shirtColor, mockupImage]);
+
 
   const saveToHistory = useCallback((state: EditorState) => {
     historyRef.current.push(state);
