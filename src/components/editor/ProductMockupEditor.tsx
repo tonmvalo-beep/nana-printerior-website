@@ -451,40 +451,45 @@ const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
             >
               <Layer>
 
-{/* TSHIRT realistic mockup: tinted base + shading overlay */}
-{mockupImage && preset.productType === 'tshirt' && (() => {
-  const rgb = hexToRgb(shirtColor || '#ffffff');
-  return (
-    <>
-      {/* Base shirt */}
-<KonvaImage
-  ref={tshirtBaseRef}
-  image={mockupImage}
-  x={0}
-  y={0}
-  width={preset.canvasWidth}
-  height={preset.canvasHeight}
-  filters={[Konva.Filters.RGBA]}
-  red={rgb.r}
-  green={rgb.g}
-  blue={rgb.b}
-  alpha={255}
-/>
+{mockupImage && preset.productType === 'tshirt' && (
+  <>
+    {/* 1) Base shirt (naj bo PNG s transparent ozadjem) */}
+    <KonvaImage
+      image={mockupImage}
+      x={0}
+      y={0}
+      width={preset.canvasWidth}
+      height={preset.canvasHeight}
+      listening={false}
+    />
 
-      {/* Shading overlay keeps folds/shadows */}
-      {tshirtShade && (
-        <KonvaImage
-          image={tshirtShade}
-          x={0}
-          y={0}
-          width={preset.canvasWidth}
-          height={preset.canvasHeight}
-          opacity={0.9}
-        />
-      )}
-    </>
-  );
-})()}
+    {/* 2) Tint barva "znotraj" majice */}
+    <Rect
+      x={0}
+      y={0}
+      width={preset.canvasWidth}
+      height={preset.canvasHeight}
+      fill={shirtColor || '#ffffff'}
+      globalCompositeOperation="source-atop"
+      listening={false}
+    />
+
+    {/* 3) Shading / folds */}
+    {tshirtShade && (
+      <KonvaImage
+        image={tshirtShade}
+        x={0}
+        y={0}
+        width={preset.canvasWidth}
+        height={preset.canvasHeight}
+        opacity={0.9}
+        globalCompositeOperation="multiply"
+        listening={false}
+      />
+    )}
+  </>
+)}
+
 
 
                 <Rect
