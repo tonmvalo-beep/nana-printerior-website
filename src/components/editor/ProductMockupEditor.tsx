@@ -454,19 +454,19 @@ const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
   return (
     <>
       {/* Base shirt */}
-      <KonvaImage
-        image={mockupImage}
-        x={0}
-        y={0}
-        width={preset.canvasWidth}
-        height={preset.canvasHeight}
-        // Tint the base shirt while keeping its texture
-        filters={[Konva.Filters.RGBA]}
-        red={rgb.r}
-        green={rgb.g}
-        blue={rgb.b}
-        alpha={255}
-      />
+<KonvaImage
+  ref={tshirtBaseRef}
+  image={mockupImage}
+  x={0}
+  y={0}
+  width={preset.canvasWidth}
+  height={preset.canvasHeight}
+  filters={[Konva.Filters.RGBA]}
+  red={rgb.r}
+  green={rgb.g}
+  blue={rgb.b}
+  alpha={255}
+/>
 
       {/* Shading overlay keeps folds/shadows */}
       {tshirtShade && (
