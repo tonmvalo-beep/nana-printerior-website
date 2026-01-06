@@ -50,6 +50,8 @@ export default function ProductMockupEditor({
   const stageRef = useRef<Konva.Stage>(null);
   const transformerRef = useRef<Konva.Transformer>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const tshirtBaseRef = useRef<Konva.Image>(null);
+
 
   const [editorState, setEditorState] = useState<EditorState>({
     objects: [],
