@@ -18,11 +18,10 @@ const tshirtPreset: ProductPreset = {
   name: 'T-Shirt',
   canvasWidth: 800,
   canvasHeight: 800,
-  mockupImageUrl: tshirtBaseUrl,
   printableRects: {
-    default: { x: 250, y: 250, width: 300, height: 200 },
-    front: { x: 250, y: 250, width: 300, height: 200 },
-    back: { x: 250, y: 250, width: 300, height: 200 }
+    default: { x: 250, y: 260, width: 300, height: 220 },
+    front: { x: 250, y: 260, width: 300, height: 220 },
+    back: { x: 250, y: 260, width: 300, height: 220 }
   }
 };
 

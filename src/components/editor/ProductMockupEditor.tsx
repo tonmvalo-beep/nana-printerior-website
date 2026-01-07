@@ -1,5 +1,6 @@
-import tshirtShadeUrl from '@/assets/mockups/tshirt/shade.png';
 import React, { useState, useRef, useEffect, useCallback } from 'react';
+import tshirtBaseUrl from '@/assets/mockups/tshirt/base.png';
+import tshirtShadeUrl from '@/assets/mockups/tshirt/shade.png';
 import { Stage, Layer, Rect, Text, Image as KonvaImage, Group, Transformer } from 'react-konva';
 import Konva from 'konva';
 import { useDropzone } from 'react-dropzone';
@@ -76,24 +77,24 @@ export default function ProductMockupEditor({
     : preset.printableRects['default'] || { x: 50, y: 50, width: 300, height: 400 };
 
   useEffect(() => {
-    if (preset.mockupImageUrl) {
+    if (preset.productType === 'tshirt') {
+      const base = new Image();
+      base.crossOrigin = 'anonymous';
+      base.src = tshirtBaseUrl;
+      base.onload = () => setMockupImage(base);
+
+      const shade = new Image();
+      shade.crossOrigin = 'anonymous';
+      shade.src = tshirtShadeUrl;
+      shade.onload = () => setTshirtShade(shade);
+    } else if (preset.mockupImageUrl) {
       const img = new Image();
       img.crossOrigin = 'anonymous';
       img.src = preset.mockupImageUrl;
       img.onload = () => setMockupImage(img);
-
+      setTshirtShade(null);
     }
-  }, [preset.mockupImageUrl]);
-  useEffect(() => {
-  if (preset.productType === 'tshirt') {
-    const shade = new Image();
-    shade.crossOrigin = 'anonymous';
-    shade.src = tshirtShadeUrl;
-    shade.onload = () => setTshirtShade(shade);
-  } else {
-    setTshirtShade(null);
-  }
-}, [preset.productType]);
+  }, [preset.productType, preset.mockupImageUrl]);
 
 
 
@@ -438,7 +439,7 @@ const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
               ref={stageRef}
               width={preset.canvasWidth}
               height={preset.canvasHeight}
-              style={{ border: '1px solid #ccc', background: 'white' }}
+              style={{ border: '1px solid #ccc', background: '#f3f4f6' }}
             >
               <Layer>
 
