@@ -1,4 +1,3 @@
-import tshirtBaseUrl from '@/assets/mockups/tshirt/base.png';
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
@@ -90,6 +89,7 @@ export default function TShirtEditor({ onClose }: TShirtEditorProps) {
               preset={tshirtPreset}
               shirtColor={shirtColor}
               onShirtColorChange={setShirtColor}
+              side={side}
             />
           </div>
         </div>

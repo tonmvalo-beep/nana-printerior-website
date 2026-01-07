@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import tshirtBaseUrl from '@/assets/mockups/tshirt/base.png';
-import tshirtShadeUrl from '@/assets/mockups/tshirt/shade.png';
+import tshirtFrontUrl from '@/assets/mockups/tshirt/front.png';
+import tshirtBackUrl from '@/assets/mockups/tshirt/back.png';
 import { Stage, Layer, Rect, Text, Image as KonvaImage, Group, Transformer } from 'react-konva';
 import Konva from 'konva';
 import { useDropzone } from 'react-dropzone';
@@ -24,6 +24,7 @@ interface ProductMockupEditorProps {
   onSizeChange?: (size: string) => void;
   shirtColor?: string;
   onShirtColorChange?: (color: string) => void;
+  side?: 'front' | 'back';
   panelPricing?: { [key: string]: string };
 }
 
@@ -46,6 +47,7 @@ export default function ProductMockupEditor({
   onSizeChange,
   shirtColor,
   onShirtColorChange,
+  side = 'front',
   panelPricing
 }: ProductMockupEditorProps) {
   const { toast } = useToast();
@@ -69,7 +71,6 @@ export default function ProductMockupEditor({
   const [fontSize, setFontSize] = useState(40);
   const [showInquiry, setShowInquiry] = useState(false);
   const [mockupImage, setMockupImage] = useState<HTMLImageElement | null>(null);
-  const [tshirtShade, setTshirtShade] = useState<HTMLImageElement | null>(null);
 
 
   const printableRect = selectedSize && preset.printableRects[selectedSize]
@@ -78,23 +79,17 @@ export default function ProductMockupEditor({
 
   useEffect(() => {
     if (preset.productType === 'tshirt') {
-      const base = new Image();
-      base.crossOrigin = 'anonymous';
-      base.src = tshirtBaseUrl;
-      base.onload = () => setMockupImage(base);
-
-      const shade = new Image();
-      shade.crossOrigin = 'anonymous';
-      shade.src = tshirtShadeUrl;
-      shade.onload = () => setTshirtShade(shade);
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.src = side === 'front' ? tshirtFrontUrl : tshirtBackUrl;
+      img.onload = () => setMockupImage(img);
     } else if (preset.mockupImageUrl) {
       const img = new Image();
       img.crossOrigin = 'anonymous';
       img.src = preset.mockupImageUrl;
       img.onload = () => setMockupImage(img);
-      setTshirtShade(null);
     }
-  }, [preset.productType, preset.mockupImageUrl]);
+  }, [preset.productType, preset.mockupImageUrl, side]);
 
 
 
@@ -445,7 +440,7 @@ const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
 
 {mockupImage && preset.productType === 'tshirt' && (
   <>
-    {/* 1) Base shirt (naj bo PNG s transparent ozadjem) */}
+    {/* 1) Base T-shirt image (transparent PNG from user upload) */}
     <KonvaImage
       image={mockupImage}
       x={0}
@@ -455,27 +450,15 @@ const { getRootProps, getInputProps, isDragActive, open } = useDropzone({
       listening={false}
     />
 
-    {/* 2) Tint barva "znotraj" majice */}
-    <Rect
-      x={0}
-      y={0}
-      width={preset.canvasWidth}
-      height={preset.canvasHeight}
-      fill={shirtColor || '#ffffff'}
-      globalCompositeOperation="source-atop"
-      listening={false}
-    />
-
-    {/* 3) Shading / folds */}
-    {tshirtShade && (
-      <KonvaImage
-        image={tshirtShade}
+    {/* 2) Color overlay (clips to shirt shape using source-atop) */}
+    {shirtColor && shirtColor !== '#FFFFFF' && (
+      <Rect
         x={0}
         y={0}
         width={preset.canvasWidth}
         height={preset.canvasHeight}
-        opacity={0.9}
-        globalCompositeOperation="multiply"
+        fill={shirtColor}
+        globalCompositeOperation="source-atop"
         listening={false}
       />
     )}
