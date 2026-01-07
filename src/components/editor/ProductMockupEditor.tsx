@@ -1,3 +1,4 @@
+import tshirtShadeUrl from '@/assets/mockups/tshirt/shade.png';
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Stage, Layer, Rect, Text, Image as KonvaImage, Group, Transformer } from 'react-konva';
 import Konva from 'konva';
@@ -87,7 +88,7 @@ export default function ProductMockupEditor({
   if (preset.productType === 'tshirt') {
     const shade = new Image();
     shade.crossOrigin = 'anonymous';
-    shade.src = '/mockups/tshirt/shade.png';
+    shade.src = tshirtShadeUrl;
     shade.onload = () => setTshirtShade(shade);
   } else {
     setTshirtShade(null);
